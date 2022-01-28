@@ -14,26 +14,37 @@ const Login = () => {
     const [home, setHome] = useState(true);
 
 
+
+   
    const handleLogin = (e) => {
         e.preventDefault();
 
-        let mail = localStorage.getItem("email").replace(/"/g, "");
-        console.log(mail);
-        let pass = localStorage.getItem("password").replace(/"/g, "");
-        console.log(pass);
+        // let mail = localStorage.getItem("email").replace(/"/g, "");
+        // console.log(mail);
+        // let pass = localStorage.getItem("password").replace(/"/g, "");
+        // console.log(pass);
 
-        if(!email || !password){
-            setFlag(true);
-            console.log("empty")
+        let datas = localStorage.getItem("details");
+        console.log(datas);
+        
+        datas.map((detail)=>{
+            return detail.username;
 
-        }
-        else if(password !== pass || email !== mail){
-            setFlag(true)
-        }
-        else{
-            setHome(!home);
-            setFlag(false);
-        }
+        })
+
+
+        // if(!email || !password){
+        //     setFlag(true);
+        //     console.log("empty")
+
+        // }
+        // else if(password !== pass || email !== mail){
+        //     setFlag(true)
+        // }
+        // else{
+        //     setHome(!home);
+        //     setFlag(false);
+        // }
 
     }
 
@@ -70,7 +81,6 @@ const Login = () => {
                         <Alert color="primary" variant="warning">
                             Fill correct Info else keep trying.
                         </Alert>)}
-                   
                 </Form>
                 
             ):( <Home />)}
