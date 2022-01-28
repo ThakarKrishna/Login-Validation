@@ -13,6 +13,7 @@ const Login = () => {
     const [flag, setFlag] = useState(false);
     const [home, setHome] = useState(true);
 
+    let datas = []
 
 
    
@@ -24,28 +25,32 @@ const Login = () => {
         // let pass = localStorage.getItem("password").replace(/"/g, "");
         // console.log(pass);
 
-        let datas = localStorage.getItem("details");
-        console.log(datas);
+        datas=localStorage.getItem("details");
+        console.log(JSON.parse(datas));
+
+        JSON.parse(datas).map((detail)=>{
+            console.log(detail.email);
+            console.log(detail.password)
+ 
+      
+
         
-        datas.map((detail)=>{
-            return detail.username;
-
-        })
+        
 
 
-        // if(!email || !password){
-        //     setFlag(true);
-        //     console.log("empty")
+        if(!email || !password){
+            setFlag(true);
+            console.log("empty")
 
-        // }
-        // else if(password !== pass || email !== mail){
-        //     setFlag(true)
-        // }
-        // else{
-        //     setHome(!home);
-        //     setFlag(false);
-        // }
-
+        }
+        else if(password !== detail.password || email !== detail.email){
+            setFlag(true)
+        }
+        else{
+            setHome(!home);
+            setFlag(false);
+        }
+    })
     }
 
     return (
